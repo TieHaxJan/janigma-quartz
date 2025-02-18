@@ -160,9 +160,10 @@ type ExplorerNodeProps = {
   opts: Options
   fileData: QuartzPluginData
   fullPath?: string
+  externalLink?: { url: string; target?: string }
 }
 
-export function ExplorerNode({ node, opts, fullPath, fileData }: ExplorerNodeProps) {
+export function ExplorerNode({ node, opts, fullPath, fileData, externalLink }: ExplorerNodeProps) {
   // Get options
   const folderBehavior = opts.folderClickBehavior
   const isDefaultOpen = opts.folderDefaultState === "open"
@@ -170,10 +171,18 @@ export function ExplorerNode({ node, opts, fullPath, fileData }: ExplorerNodePro
   // Calculate current folderPath
   const folderPath = node.name !== "" ? joinSegments(fullPath ?? "", node.name) : ""
   const href = resolveRelative(fileData.slug!, folderPath as SimpleSlug) + "/"
+  const isExternal = node.file && node.file.externalLink !== undefined
 
   return (
     <>
-      {node.file ? (
+      {isExternal ? (
+        // External link node
+        <li>
+          <a href={node.file.externalLink} target={"_blank"} class="external-link">
+            {node.displayName}
+          </a>
+        </li>
+      ) : node.file ? (
         // Single file node
         <li key={node.file.slug}>
           <a href={resolveRelative(fileData.slug!, node.file.slug!)} data-for={node.file.slug}>
