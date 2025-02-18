@@ -6,13 +6,16 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [],
-  footer: Component.Footer({
-    links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
-    },
-  }),
+  footer: Component.Footer(),
 }
+
+const order = new Map([
+  ["FS3", 1],
+  ["FS4", 2],
+  ["FS5", 3],
+  ["Elective", 4],
+  ["Blog", 5]
+]);
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
@@ -27,10 +30,33 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    Component.Explorer(),
+    Component.Explorer(
+      {
+        title: "Inhalt",
+        useSavedState: false,
+        sortFn: (a, b) => {
+          const orderA = order.get(a.displayName) ?? 99;
+          const orderB = order.get(b.displayName) ?? 99;
+
+          return orderA - orderB;
+        }
+      }
+    ),
   ],
   right: [
-    Component.Graph(),
+    Component.Graph({
+      localGraph: {
+        scale: 2.0,
+        depth: 3,
+        fontSize: 1.5,
+        repelForce: 0.2,
+      },
+      globalGraph: {
+        scale: 3.0,
+        fontSize: 1,
+        repelForce: 2,
+      }
+    }),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
@@ -44,7 +70,18 @@ export const defaultListPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    Component.Explorer(),
+    Component.Explorer(
+      {
+        title: "Inhalt",
+        useSavedState: false,
+        sortFn: (a, b) => {
+          const orderA = order.get(a.displayName) ?? 99;
+          const orderB = order.get(b.displayName) ?? 99;
+
+          return orderA - orderB;
+        }
+      }
+    ),
   ],
   right: [],
 }

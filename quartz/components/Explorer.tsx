@@ -7,6 +7,7 @@ import { ExplorerNode, FileNode, Options } from "./ExplorerNode"
 import { QuartzPluginData } from "../plugins/vfile"
 import { classNames } from "../util/lang"
 import { i18n } from "../i18n"
+import { FullSlug } from "../util/path"
 
 // Options interface defined in `ExplorerNode` to avoid circular dependency
 const defaultOptions = {
@@ -49,6 +50,14 @@ export default ((userOpts?: Partial<Options>) => {
   function constructFileTree(allFiles: QuartzPluginData[]) {
     // Construct tree from allFiles
     fileTree = new FileNode("")
+    fileTree.add({
+      slug: "Photography" as FullSlug,
+      externalLink: "https://jan.schulz-nigmann.de"
+    })
+    fileTree.add({
+      slug: "GitHub" as FullSlug,
+      externalLink: "https://github.com/TieHaxJan"
+    })
     allFiles.forEach((file) => fileTree.add(file))
 
     // Execute all functions (sort, filter, map) that were provided (if none were provided, only default "sort" is applied)
