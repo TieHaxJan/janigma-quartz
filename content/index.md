@@ -37,8 +37,8 @@ Alle meine Zusammenfassungen sind auf Deutsch. Keine Garantie für Richtigkeit o
 
 **Information Processing** \
 📄 [Scalable Data Management Systems](./Elective/InfoProcessing/sdms.md) \
-📄 [Natural Language Processing and the Web](./Elective/InfoProcessing/nlp4web.md)
-📄 Coming Soon: Ethics for Natural Language Processing
+📄 [Natural Language Processing and the Web](./Elective/InfoProcessing/nlp4web.md) \
+📄 Coming Soon: Ethics for Natural Language Processing \
 📄 Coming Soon: Deep Learning: Architectures and Methods
 
 **Ringvorlesungen** \
