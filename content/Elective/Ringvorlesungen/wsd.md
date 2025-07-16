@@ -1,7 +1,7 @@
 ---
 title: "Was steckt dahinter?"
 tags: [WSD]
-date: 2025-07-04
+date: 2025-07-16
 draft: false
 ---
 Eine Zusammenfassung der Inhalte der Vorlesung **Was steckt dahinter?** aus dem Sommersemester 2025. 
@@ -10,7 +10,6 @@ Eine Zusammenfassung der Inhalte der Vorlesung **Was steckt dahinter?** aus dem 
 > 
 > Da es sich bei dieser Vorlesung um eine Ringvorlesung handelt, kann es sein, dass sich die Inhalte von Jahr zu Jahr unterscheiden.
 > Die Zusammenfassung ist wie die Vorlesungsfolien mit dem selben Passwort versehen.
-> Die Zusammenfassung beinhaltet nach aktuellem Stand nicht die Vorlesungen vom 01.07. und 08.07.2025.
 
 <a href="./Elective/Ringvorlesungen/WSD/WSD_Summary.pdf" target="_blank">Download</a>
 
