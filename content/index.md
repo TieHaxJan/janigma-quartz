@@ -31,9 +31,9 @@ Alle meine Zusammenfassungen sind auf Deutsch. Keine Garantie für Richtigkeit o
 
 **Visual** \
 📄 [Graphische Datenverarbeitung 1](./Elective/Visual/GDV1.md) \
-📄 [Informationsvisualisierung und Visual Analytics](./Elective/Visual/ivva.md) \
-📄 [Ambient Intelligence](./Elective/Visual/ami.md) \
-📄 [Serious Games Vorlesung](./Elective/Visual/sgv.md)
+📄 [Informationsvisualisierung und Visual Analytics](./Elective/Visual/IVVA.md) \
+📄 [Ambient Intelligence](./Elective/Visual/AmI.md) \
+📄 [Serious Games Vorlesung](./Elective/Visual/SGV.md)
 
 **Information Processing** \
 📄 [Scalable Data Management Systems](./Elective/InfoProcessing/sdms.md) \
