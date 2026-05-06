@@ -70,9 +70,9 @@ Polygon Clipping, Clipping Algorithms, Clipping, Polygon, Computational Geometry
     11. Foster-Hormann
     12. Dimri
 4. Comparison
-    - Limitations
+    1. Limitations
 5. Libraries
-    - Performance
+    1. Performance
 6. Conclusion
 
 <div style="text-align: center;">

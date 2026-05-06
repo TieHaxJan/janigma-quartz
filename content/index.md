@@ -59,7 +59,7 @@ Besuche meinen Blog für aktuelle Artikel zu Informatik, Technologie und anderen
 📄 Master Thesis: Explainable HuggingGPT
 
 ### **2025**
-📄 Temporal Training Data
+📄 [Temporal Training Data](./Blog/temporaltrainingdata.md)
 
 ### **2023**
 📄 Bachelor Thesis: User Steering in Neural Network Training \
