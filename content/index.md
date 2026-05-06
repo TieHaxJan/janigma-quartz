@@ -39,7 +39,7 @@ Alle meine Zusammenfassungen sind auf Deutsch. Keine Garantie für Richtigkeit o
 📄 [Scalable Data Management Systems](./Elective/InfoProcessing/sdms.md) \
 📄 [Natural Language Processing and the Web](./Elective/InfoProcessing/nlp4web.md) \
 📄 [Ethics for Natural Language Processing](./Elective/InfoProcessing/ethics4nlp.md) \
-📄 Coming Soon: Deep Learning: Architectures and Methods
+📄 [Deep Learning: Architectures and Methods](./Elective/InfoProcessing/dlam.md)
 
 **Ringvorlesungen** \
 📄 [System Erde-Mensch](./Elective/Ringvorlesungen/sem.md) \
