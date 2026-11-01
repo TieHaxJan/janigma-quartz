@@ -14,14 +14,6 @@ export const sharedPageComponents: SharedLayout = {
   }),
 }
 
-const order = new Map([
-  ["FS3", 1],
-  ["FS4", 2],
-  ["FS5", 3],
-  ["Elective", 4],
-  ["Blog", 5]
-]);
-
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
@@ -49,11 +41,15 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer({
       title: "Inhalt",
       useSavedState: false,
+      // Die Funktion wird als String in die Seite geschrieben und im Browser ausgeführt,
+      // darf also keine Variablen von außerhalb verwenden.
       sortFn: (a, b) => {
-        const orderA = order.get(a.displayName) ?? 99
-        const orderB = order.get(b.displayName) ?? 99
+        // keine inneren Funktionen: der Bundler würde Hilfsfunktionen einfügen, die im Browser fehlen
+        const order = ["FS3", "FS4", "FS5", "Elective", "Blog"]
+        const ia = order.indexOf(a.displayName)
+        const ib = order.indexOf(b.displayName)
 
-        return orderA - orderB
+        return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib)
       },
     }),
   ],
@@ -94,11 +90,15 @@ export const defaultListPageLayout: PageLayout = {
     Component.Explorer({
       title: "Inhalt",
       useSavedState: false,
+      // Die Funktion wird als String in die Seite geschrieben und im Browser ausgeführt,
+      // darf also keine Variablen von außerhalb verwenden.
       sortFn: (a, b) => {
-        const orderA = order.get(a.displayName) ?? 99
-        const orderB = order.get(b.displayName) ?? 99
+        // keine inneren Funktionen: der Bundler würde Hilfsfunktionen einfügen, die im Browser fehlen
+        const order = ["FS3", "FS4", "FS5", "Elective", "Blog"]
+        const ia = order.indexOf(a.displayName)
+        const ib = order.indexOf(b.displayName)
 
-        return orderA - orderB
+        return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib)
       },
     }),
   ],
