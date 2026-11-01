@@ -1,0 +1,37 @@
+# Portainer-Stack für die Quartz-Seite (summaries.janigma.com), läuft hinter dem Nginx Proxy Manager.
+#
+# Einrichtung in Portainer: Stacks -> Add stack -> "Repository"
+#   Repository URL:        https://github.com/TieHaxJan/janigma-quartz  (bei privatem Repo: Authentication + Token)
+#   Repository reference:  refs/heads/v4
+#   Compose path:          docker-compose.yml
+#   Optional "GitOps updates": Mechanism "Webhook" oder "Polling", dann baut Portainer bei neuen Commits selbst neu.
+#
+# Umgebungsvariable (im Stack unter "Environment variables"):
+#   NPM_NETWORK = Name des Docker-Netzwerks, in dem der Nginx Proxy Manager hängt
+#                 (Portainer -> Networks bzw. NPM-Container -> "Connected networks").
+#
+# In NPM: Proxy Host -> Forward Hostname "janigma-quartz", Forward Port 80, Scheme http,
+#         SSL-Zertifikat auswählen, "Force SSL" aktivieren.
+
+services:
+  quartz:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    image: janigma-quartz:latest
+    container_name: janigma-quartz
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - npm
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 1m
+      timeout: 5s
+      retries: 3
+
+networks:
+  npm:
+    external: true
+    name: ${NPM_NETWORK:-npm_default}
