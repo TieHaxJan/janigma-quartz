@@ -6,7 +6,12 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [],
-  footer: Component.Footer(),
+  footer: Component.Footer({
+    links: {
+      Photography: "https://jan.schulz-nigmann.de",
+      GitHub: "https://github.com/TieHaxJan",
+    },
+  }),
 }
 
 const order = new Map([
@@ -20,7 +25,10 @@ const order = new Map([
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
-    Component.Breadcrumbs(),
+    Component.ConditionalRender({
+      component: Component.Breadcrumbs(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
@@ -28,20 +36,26 @@ export const defaultContentPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
-    Component.Darkmode(),
-    Component.Explorer(
-      {
-        title: "Inhalt",
-        useSavedState: false,
-        sortFn: (a, b) => {
-          const orderA = order.get(a.displayName) ?? 99;
-          const orderB = order.get(b.displayName) ?? 99;
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+        { Component: Component.ReaderMode() },
+      ],
+    }),
+    Component.Explorer({
+      title: "Inhalt",
+      useSavedState: false,
+      sortFn: (a, b) => {
+        const orderA = order.get(a.displayName) ?? 99
+        const orderB = order.get(b.displayName) ?? 99
 
-          return orderA - orderB;
-        }
-      }
-    ),
+        return orderA - orderB
+      },
+    }),
   ],
   right: [
     Component.Graph({
@@ -68,20 +82,25 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
-    Component.Darkmode(),
-    Component.Explorer(
-      {
-        title: "Inhalt",
-        useSavedState: false,
-        sortFn: (a, b) => {
-          const orderA = order.get(a.displayName) ?? 99;
-          const orderB = order.get(b.displayName) ?? 99;
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+      ],
+    }),
+    Component.Explorer({
+      title: "Inhalt",
+      useSavedState: false,
+      sortFn: (a, b) => {
+        const orderA = order.get(a.displayName) ?? 99
+        const orderB = order.get(b.displayName) ?? 99
 
-          return orderA - orderB;
-        }
-      }
-    ),
+        return orderA - orderB
+      },
+    }),
   ],
   right: [],
 }
