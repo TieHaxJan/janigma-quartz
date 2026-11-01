@@ -7,7 +7,7 @@
 #   Optional "GitOps updates": Mechanism "Webhook" oder "Polling", dann baut Portainer bei neuen Commits selbst neu.
 #
 # Umgebungsvariable (im Stack unter "Environment variables"):
-#   NPM_NETWORK = Name des Docker-Netzwerks, in dem der Nginx Proxy Manager hängt
+#   NPM_NETWORK (optional) = Docker-Netzwerk, in dem der Nginx Proxy Manager hängt; Standard: "website"
 #                 (Portainer -> Networks bzw. NPM-Container -> "Connected networks").
 #
 # In NPM: Proxy Host -> Forward Hostname "janigma-quartz", Forward Port 80, Scheme http,
@@ -34,4 +34,4 @@ services:
 networks:
   npm:
     external: true
-    name: ${NPM_NETWORK:-npm_default}
+    name: ${NPM_NETWORK:-website}
