@@ -1,16 +1,18 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
+const sidebarLinks = {
+  Photography: "https://jan.schulz-nigmann.de",
+  GitHub: "https://github.com/TieHaxJan",
+}
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [],
   footer: Component.Footer({
-    links: {
-      Photography: "https://jan.schulz-nigmann.de",
-      GitHub: "https://github.com/TieHaxJan",
-    },
+    links: sidebarLinks,
   }),
 }
 
@@ -52,6 +54,7 @@ export const defaultContentPageLayout: PageLayout = {
         return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib)
       },
     }),
+    Component.DesktopOnly(Component.ExternalLinks({ links: sidebarLinks })),
   ],
   right: [
     Component.Graph({
@@ -101,6 +104,7 @@ export const defaultListPageLayout: PageLayout = {
         return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib)
       },
     }),
+    Component.DesktopOnly(Component.ExternalLinks({ links: sidebarLinks })),
   ],
   right: [],
 }
