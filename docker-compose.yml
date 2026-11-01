@@ -19,6 +19,9 @@ services:
       context: .
       dockerfile: Dockerfile.nginx
     image: janigma-quartz:latest
+    # Bei jedem Deploy/Redeploy neu bauen (Docker-Layer-Cache bleibt, nur Geändertes wird neu gebaut).
+    # Ohne diese Zeile startet Compose ein vorhandenes lokales Image nur neu.
+    pull_policy: build
     container_name: janigma-quartz
     restart: unless-stopped
     expose:
